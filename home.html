@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+               
+    </head>
+
+    <body>
+        <div class="container" style="margin-top: 50px ;">
+            
+            <h1 class="text-center text-white">Previsão do Tempo</h1>
+
+        <br>
+        
+        <div class="card" >
+            <br>
+            <form method="post" action="/previsao" class="text-center text-white">
+                <div class="row">
+                    <div class="d-flex justify-content-center">
+                        <div class="col-auto">
+                            <input type="text" class="form-control" autocomplete="country-name" placeholder="Faça a busca por uma cidade ou um país..."  name="cidade" value="{{request.form['cidade']}}" required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" name="click" class="btn third" value="click"><i class="bi bi-search"></i></button>
+                        </div>
+                    </div>
+                    
+
+                </div>
+               
+            </form>
+            <div class="card-body">
+                {% if localidade == none%}
+                <h2></h2>
+            {%elif 20 > temperatura %}
+            
+            <h2 class="card-title">Localidade: {{localidade.upper()}}</h2>
+            <h2 class="card-text">Temperatura: {{temperatura}}ºC </h2>
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="card-text">
+                        Temperatura Máxima: {{temperatura_maxima}}ºC
+                    </h2>
+                </div>
+    
+                <div class="col-6">
+                    <h2 class="text-center card-text">
+                        Temperatura Mínima: {{temperatura_minima}}ºC
+                    </h2>
+                </div>
+    
+            </div>
+            <h2 class="card-text">Umidade: {{umidade}}%</h2>
+            <h2 class="card-text">Descrição: {{descricao.upper()}} <i class="bi bi-cloud-snow"></i></h2>
+            <h2 class="card-text">Velocidade do vento: {{veloc_vento}}km/h</h2>
+    
+            {%elif temperatura == 'Alerta Amarelo, Chuvas Intensas'%}
+    
+            <h2 class="card-title">Localidade: {{localidade.upper()}}</h2>
+            <h2 class="card-text">Temperatura: {{temperatura}}ºC </h2>
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="card-text">
+                        Temperatura Máxima: {{temperatura_maxima}}ºC
+                    </h2>
+                </div>
+    
+                <div class="col-6">
+                    <h2 class="text-center card-text">
+                        Temperatura Mínima: {{temperatura_minima}}ºC
+                    </h2>
+                </div>
+    
+            </div>
+            <h2 class="card-text">Umidade: {{umidade}}%</h2>
+            <h2 class="card-text">Descrição: {{descricao.upper()}} <i class="bi bi-cloud-snow"></i></h2>
+            <h2 class="card-text">Velocidade do vento: {{veloc_vento}}km/h</h2>
+    
+            {%else%}
+    
+            <h2 class="card-title">Localidade: {{localidade.upper()}}</h2>
+            <h2 class="card-text">Temperatura: {{temperatura}}ºC </h2>
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="card-text">
+                        Temperatura Máxima: {{temperatura_maxima}}ºC
+                    </h2>
+                </div>
+    
+                <div class="col-6">
+                    <h2 class="text-center card-text">
+                        Temperatura Mínima: {{temperatura_minima}}ºC
+                    </h2>
+                </div>
+    
+            </div>
+            <h2 class="card-text">Umidade: {{umidade}}%</h2>
+            <h2 class="card-text">Descrição: {{descricao.upper()}} <i class="bi bi-cloud-snow"></i></h2>
+            <h2 class="card-text">Velocidade do vento: {{veloc_vento}}km/h</h2>
+            {%endif%}
+            </div>
+          </div>
+
+       
+        <br>
+        
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
+
+    <style>
+        
+        .third {
+        border-color: #3498db;
+        color: #fff;
+        box-shadow: 0 0 40px 40px #3498db inset, 0 0 0 0 #3498db;
+        -webkit-transition: all 150ms ease-in-out;
+        transition: all 150ms ease-in-out;
+        }
+        .third:hover {
+        box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+        color: #3498db;
+        }
+
+        body{
+            background-color: transparent;
+            text-align: center;
+        }
+        
+        html{
+            
+            background-image: url("https://cdn2.vectorstock.com/i/1000x1000/28/61/weather-forecast-background-vector-932861.jpg");
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position-x: center;
+            
+    
+        }
+
+    </style>
+
+</html>
